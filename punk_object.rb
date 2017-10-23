@@ -15,11 +15,13 @@ class BeersService
   base_uri 'https://api.punkapi.com/v2'
 
   def get_single_beer(beer_id)
-    JSON.parse(self.class.get("/beers/#{beer_id}").body)
+    response = JSON.parse(self.class.get("/beers/#{beer_id}").body)
+    response[0]
   end
 
   def get_random_beer
-    JSON.parse(self.class.get("/beers/random").body)
+    response = JSON.parse(self.class.get("/beers/random").body)
+    response[0]
   end
 
   def check_params_valid(params_hash)
@@ -46,7 +48,9 @@ class BeersService
     end
   end
 
-  def get_beer_search_results
+  def get_beer_search_results(query_params)
+    self.check_params_valid(query_params)
+    self.add_params_to_url
     JSON.parse(self.class.get("/beers#{@url_params}").body)
   end
 
@@ -54,6 +58,4 @@ end
 
 beer = BeersService.new
 # p beer.get_single_beer("1")
-beer.check_params_valid({'abv_gt' => '8', 'yeast' => 'Wyeast_1056_-_American_Ale'})
-beer.add_params_to_url
-p beer.get_beer_search_results
+p beer.get_beer_search_results({'abv_gt' => '8', 'yeast' => 'Wyeast_1056_-_American_Ale'})
