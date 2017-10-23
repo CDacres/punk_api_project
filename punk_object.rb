@@ -11,6 +11,7 @@ class BeersService
   end
 
   def get_random_beer
+    JSON.parse(self.class.get("/beers/random").body)
   end
 
 end
