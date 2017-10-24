@@ -1,6 +1,6 @@
 # Punk API Web Service
 
-A Service Object Model for Punk API.
+A Service Object Model for Punk API. Including test framework.
 
 ### Technology used
 

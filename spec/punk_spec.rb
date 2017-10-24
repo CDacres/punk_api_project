@@ -91,6 +91,23 @@ describe 'Validate beer fields' do
       expect(@beer.length).to eq(25)
     end
 
+    it 'each hash in the array should have an id which is an integer' do
+      @beer.each do |i|
+        expect(i["id"]).to be_a(Integer)
+      end
+    end
+
+    it 'each hash in the array should have a first_brewed date which is 2 characters followed by a / followed by 4 characters' do
+      @beer.each do |i|
+        expect(i["first_brewed"]).to be_a(String)
+        expect(i["first_brewed"].length).to eq(7)
+        expect(i["first_brewed"]).to include('/')
+        split_array = i["first_brewed"].split('/')
+        expect(split_array[0].length).to eq(2)
+        expect(split_array[1].length).to eq(4)
+      end
+    end
+
   end
 
   context 'Search Beers' do
@@ -101,15 +118,37 @@ describe 'Validate beer fields' do
       @beer_function_check = BeersService.new
     end
 
-    it 'should put keys and values from search params into respective arrays if valid' do
-      @beer_function_check.check_params_valid({'abv_gt' => '8', 'yeast' => 'American'})
-      expect(@beer_function_check.key_array).to eq(['abv_gt','yeast'])
-      expect(@beer_function_check.value_array).to eq(['8','American'])
+    it 'check_params_valid method should put keys and values from search params into respective arrays if valid' do
+      @beer_function_check.check_params_valid({'ibu_gt' => '50', 'hops' => 'Amarillo'})
+      expect(@beer_function_check.key_array).to eq(['ibu_gt','hops'])
+      expect(@beer_function_check.value_array).to eq(['50','Amarillo'])
     end
 
-    it 'should return an array of 25 beers' do
+    it 'add_params_to_url should add key and value arrays to url params string in correct url format' do
+      @beer_function_check.add_params_to_url
+      expect(@beer_function_check.url_params). to eq('?ibu_gt=50&hops=Amarillo')
+    end
+
+    it 'should return an array of up to 25 beers' do
       expect(@beer).to be_a(Array)
-      expect(@beer.length).to eq(25)
+      expect(@beer.length).to be <= 25
+    end
+
+    it 'each hash in the array should have an id which is an integer' do
+      @beer.each do |i|
+        expect(i["id"]).to be_a(Integer)
+      end
+    end
+
+    it 'each hash in the array should have a first_brewed date which is 2 characters followed by a / followed by 4 characters' do
+      @beer.each do |i|
+        expect(i["first_brewed"]).to be_a(String)
+        expect(i["first_brewed"].length).to eq(7)
+        expect(i["first_brewed"]).to include('/')
+        split_array = i["first_brewed"].split('/')
+        expect(split_array[0].length).to eq(2)
+        expect(split_array[1].length).to eq(4)
+      end
     end
 
   end
