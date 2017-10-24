@@ -4,6 +4,8 @@ require 'json'
 class BeersService
   include HTTParty
 
+  attr_accessor :key_array, :value_array, :url_params
+
   def initialize
     @key_array = []
     @value_array = []
@@ -25,7 +27,7 @@ class BeersService
   end
 
   def get_all_beers
-    response = JSON.parse(self.class.get("/beers").body)
+    response = JSON.parse(self.class.get("/beers?per_page=80").body)
   end
 
   def check_params_valid(params_hash)
@@ -59,7 +61,3 @@ class BeersService
   end
 
 end
-
-beer = BeersService.new
-# p beer.get_single_beer("1")
-# p beer.get_beer_search_results({'abv_gt' => '8', 'yeast' => 'American_Ale'})
