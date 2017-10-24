@@ -39,6 +39,10 @@ describe 'Validate Beer Services & Fields' do
       expect(@beer["ingredients"]).to be_a(Hash)
     end
 
+    it 'abv should be a float or integer or null' do
+      expect(@beer["abv"]).to be_a(Float).or be_a(Integer).or be_a(NilClass)
+    end
+
   end
 
   context 'Random Beer' do
@@ -77,6 +81,10 @@ describe 'Validate Beer Services & Fields' do
       expect(@beer["ingredients"]).to be_a(Hash)
     end
 
+    it 'abv should be a float or integer or null' do
+      expect(@beer["abv"]).to be_a(Float).or be_a(Integer).or be_a(NilClass)
+    end
+
   end
 
   context 'All Beers' do
@@ -105,6 +113,12 @@ describe 'Validate Beer Services & Fields' do
         split_array = i["first_brewed"].split('/')
         expect(split_array[0].length).to eq(2)
         expect(split_array[1].length).to eq(4)
+      end
+    end
+
+    it 'abv should be a float or integer or null' do
+      @beer.each do |i|
+        expect(i["abv"]).to be_a(Float).or be_a(Integer).or be_a(NilClass)
       end
     end
 
@@ -152,6 +166,12 @@ describe 'Validate Beer Services & Fields' do
         split_array = i["first_brewed"].split('/')
         expect(split_array[0].length).to eq(2)
         expect(split_array[1].length).to eq(4)
+      end
+    end
+
+    it 'abv should be a float or integer or null' do
+      @beer.each do |i|
+        expect(i["abv"]).to be_a(Float).or be_a(Integer).or be_a(NilClass)
       end
     end
 

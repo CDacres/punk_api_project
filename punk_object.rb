@@ -61,8 +61,3 @@ class BeersService
   end
 
 end
-
-beer = BeersService.new
-# p beer.get_single_beer("1")
-# p beer.get_all_beers
-# p beer.get_beer_search_results({'abv_gt' => '8', 'yeast' => 'American_Ale'})
