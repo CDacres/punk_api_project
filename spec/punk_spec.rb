@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative '../punk_object.rb'
 
-describe 'Validate beer fields' do
+describe 'Validate Beer Services & Fields' do
 
   context 'Single Beer' do
     before(:all) do
