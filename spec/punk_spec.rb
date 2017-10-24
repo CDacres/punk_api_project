@@ -124,6 +124,10 @@ describe 'Validate Beer Services & Fields' do
       expect(@beer_function_check.value_array).to eq(['50','Amarillo'])
     end
 
+    it 'check_params_valid method should raise an error if not valid' do
+      expect{@beer_function_check.check_params_valid({'invalid' => 'test'})}.to raise_error"No valid parameters entered"
+    end
+
     it 'add_params_to_url method should add key and value arrays to url params string in correct url format' do
       @beer_function_check.add_params_to_url
       expect(@beer_function_check.url_params). to eq('?ibu_gt=50&hops=Amarillo')
