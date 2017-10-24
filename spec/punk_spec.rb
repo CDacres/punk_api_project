@@ -86,9 +86,9 @@ describe 'Validate beer fields' do
       @beer = beer_service.get_all_beers
     end
 
-    it 'should return an array of 25 beers' do
+    it 'should return an array of 80 beers' do
       expect(@beer).to be_a(Array)
-      expect(@beer.length).to eq(25)
+      expect(@beer.length).to eq(80)
     end
 
     it 'each hash in the array should have an id which is an integer' do
@@ -97,7 +97,7 @@ describe 'Validate beer fields' do
       end
     end
 
-    it 'each hash in the array should have a first_brewed date which is 2 characters followed by a / followed by 4 characters' do
+    it 'each hash in the array should have a first_brewed date which is a string of 2 characters followed by a / followed by 4 characters' do
       @beer.each do |i|
         expect(i["first_brewed"]).to be_a(String)
         expect(i["first_brewed"].length).to eq(7)
@@ -124,7 +124,7 @@ describe 'Validate beer fields' do
       expect(@beer_function_check.value_array).to eq(['50','Amarillo'])
     end
 
-    it 'add_params_to_url should add key and value arrays to url params string in correct url format' do
+    it 'add_params_to_url method should add key and value arrays to url params string in correct url format' do
       @beer_function_check.add_params_to_url
       expect(@beer_function_check.url_params). to eq('?ibu_gt=50&hops=Amarillo')
     end
@@ -140,7 +140,7 @@ describe 'Validate beer fields' do
       end
     end
 
-    it 'each hash in the array should have a first_brewed date which is 2 characters followed by a / followed by 4 characters' do
+    it 'each hash in the array should have a first_brewed date which is a string of 2 characters followed by a / followed by 4 characters' do
       @beer.each do |i|
         expect(i["first_brewed"]).to be_a(String)
         expect(i["first_brewed"].length).to eq(7)

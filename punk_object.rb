@@ -27,7 +27,7 @@ class BeersService
   end
 
   def get_all_beers
-    response = JSON.parse(self.class.get("/beers").body)
+    response = JSON.parse(self.class.get("/beers?per_page=80").body)
   end
 
   def check_params_valid(params_hash)
