@@ -144,7 +144,7 @@ describe 'Validate Beer Services & Fields' do
 
     it 'add_params_to_url method should add key and value arrays to url params string in correct url format' do
       @beer_function_check.add_params_to_url
-      expect(@beer_function_check.url_params). to eq('?ibu_gt=50&hops=Amarillo')
+      expect(@beer_function_check.url_params).to eq('?ibu_gt=50&hops=Amarillo')
     end
 
     it 'should return an array of up to 25 beers' do
