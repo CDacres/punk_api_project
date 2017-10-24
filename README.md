@@ -14,7 +14,7 @@ The API Service was built using Ruby, with the following gems:
 
 To run the program locally, simply clone/download the git repository.
 
-To install the required gems, in the terminal run the command **bundle install**
+To install the required gems, in the terminal run the command: **bundle install**
 
 ### Using the product
 
@@ -72,3 +72,9 @@ Where *{search_criteria}* is a hash containing the following possible key-value 
 
 e.g. To search for beers with an abv greater than 8, with American yeast, you would use:
 ```p beer.get_beer_search_results({'abv_gt' => '8', 'yeast' => 'American'})```
+
+#### Testing
+
+To run the test framework for the product, in the terminal, (while in the **api_project** directory) run the command **rspec**
+
+This will run the test file *punk_spec.rb* which contains tests for each service, consisting of a single describe statment, with a separate context statement (containing the individual tests) for each service.
