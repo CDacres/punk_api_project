@@ -4,7 +4,7 @@ A Service Object Model for Punk API. Including test framework.
 
 ### Technology used
 
-The API Service was built using Ruby, with the following gems:
+The API Service was built using Ruby 2.4.1, with the following gems:
 
 * httparty
 * json
