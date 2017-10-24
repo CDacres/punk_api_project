@@ -24,6 +24,10 @@ class BeersService
     response[0]
   end
 
+  def get_all_beers
+    response = JSON.parse(self.class.get("/beers").body)
+  end
+
   def check_params_valid(params_hash)
     params_hash.each do |key, value|
       if SEARCH_PARAMS.include?(key)
@@ -58,4 +62,4 @@ end
 
 beer = BeersService.new
 # p beer.get_single_beer("1")
-p beer.get_beer_search_results({'abv_gt' => '8', 'yeast' => 'Wyeast_1056_-_American_Ale'})
+p beer.get_beer_search_results({'abv_gt' => '8', 'yeast' => 'American_Ale'})
