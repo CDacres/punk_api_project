@@ -14,7 +14,7 @@ The API Service was built using Ruby, with the following gems:
 
 To run the program locally, simply clone/download the git repository.
 
-Ensure that the gems 'json' and 'rspec' are installed in your machine.
+To install the required gems, in the terminal run the command **bundle install**
 
 ### Using the product
 
